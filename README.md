@@ -73,6 +73,16 @@ npm run dev
 ```
 访问 http://localhost:5173 即可开始使用
 
+### 代码检查
+```bash
+npm run lint
+```
+
+### 代码格式化
+```bash
+npm run format
+```
+
 ### 生产构建
 ```bash
 npm run build
@@ -91,9 +101,12 @@ npm run preview
 - **框架**: React 18.3 + TypeScript 5.6
 - **构建工具**: Vite 5.4
 - **样式**: Tailwind CSS（内联类）
+- **状态管理**: Zustand
 - **图标**: lucide-react
 - **PWA**: vite-plugin-pwa
 - **AI 集成**: Google Gemini API（可选）
+- **代码质量**: ESLint + Prettier
+- **测试**: Vitest + Testing Library
 
 ---
 
@@ -138,22 +151,36 @@ npm run preview
 ## 📁 项目结构
 
 ```
-WatermarkCamera/
-├── src/
-│   ├── App.tsx                 # 主应用组件
-│   ├── index.tsx              # 入口文件
-│   ├── types.ts               # TypeScript 类型定义
-│   ├── utils/
-│   │   └── canvasUtils.ts     # Canvas 绘制工具函数
-│   └── services/
-│       └── geminiService.ts   # AI 图像分析服务（可选）
-├── public/                     # 静态资源
-├── dist/                       # 构建输出目录
-├── Effect1.png                 # 桌面端效果图
-├── Effect2.png                 # 移动端效果图
-├── vite.config.ts             # Vite 配置
-├── tsconfig.json              # TypeScript 配置
-└── package.json               # 项目依赖
+src/
+├── components/          # UI 组件
+│   ├── CanvasPreview.tsx    # Canvas 预览和下载
+│   ├── ControlPanel.tsx     # 图片上传控制
+│   ├── DataEditor.tsx       # 水印内容编辑
+│   ├── StyleEditor.tsx      # 样式配置
+│   └── index.ts
+├── constants/           # 常量和默认配置
+│   └── defaultConfig.ts
+├── hooks/               # 自定义 Hook
+│   └── useWatermarkStore.ts # Zustand 状态管理
+├── types/               # TypeScript 类型
+│   └── index.ts
+├── utils/               # 工具函数
+│   └── canvasUtils.ts
+├── App.tsx              # 主应用组件
+└── index.tsx            # 入口文件
+```
+
+## 🧪 测试
+
+```bash
+# 运行测试（监听模式）
+npm run test
+
+# 运行一次测试
+npm run test:run
+
+# 生成覆盖率报告
+npm run test:coverage
 ```
 
 ---
